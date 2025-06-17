@@ -1,5 +1,6 @@
 require 'httparty'
 require 'dotenv/load'
+require 'json' 
 
 API_URL = 'https://api.holded.com/api/invoicing/v1/documents/invoice'
 
@@ -25,6 +26,8 @@ headers = {
   'content-type' => 'application/json',
   'key' => ENV['KEY']
 }
+
+puts "Headers: #{headers.inspect}"
 
 response = HTTParty.post(API_URL, headers: headers, body: payload.to_json)
 puts "Status: #{response.code}"
